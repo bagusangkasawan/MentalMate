@@ -1,6 +1,6 @@
 import os
 import requests
-from flask import Flask, request, jsonify, render_template, send_from_directory
+from flask import Flask, request, jsonify, render_template, send_file
 from flask_cors import CORS
 from flask_restx import Api, Resource, fields, Namespace
 from dotenv import load_dotenv
@@ -64,7 +64,7 @@ def checkin():
 
 @app.route('/favicon.ico')
 def favicon():
-    return send_from_directory('static', 'icon.png')
+    return send_file(os.path.join(os.path.dirname(__file__), 'static', 'icon.png'))
 
 # Endpoint untuk UI (form biasa)
 @app.route("/generate", methods=["POST"])
