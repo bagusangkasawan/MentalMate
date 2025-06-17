@@ -1,6 +1,6 @@
 import os
 import requests
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
 from flask_restx import Api, Resource, fields, Namespace
 from dotenv import load_dotenv
@@ -61,6 +61,10 @@ def blog():
 def checkin():
     backend_url = os.getenv("BACKEND_URL")
     return render_template("checkin.html", backend_url=backend_url)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory('static', 'icon.png')
 
 # Endpoint untuk UI (form biasa)
 @app.route("/generate", methods=["POST"])
