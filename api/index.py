@@ -139,6 +139,6 @@ class ChatEndpoint(Resource):
 # Tambahkan namespace ke Swagger
 api.add_namespace(chat_ns, path='/api')
 
-# Run server
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)
+# Handler for Vercel
+def handler(request, context=None):
+    return app(request.environ, start_response=context)
