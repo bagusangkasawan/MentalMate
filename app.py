@@ -7,11 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-app = Flask(
-    __name__,
-    template_folder="templates",
-    static_folder="static"
-)
+app = Flask(__name__)
 CORS(app)
 
 # Konfigurasi API Key dan Prompt Sistem
@@ -143,6 +139,6 @@ class ChatEndpoint(Resource):
 # Tambahkan namespace ke Swagger
 api.add_namespace(chat_ns, path='/api')
 
-# Handler for Vercel
-def handler(request, context=None):
-    return app(request.environ, context)
+# Run server
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=8080)
