@@ -145,4 +145,4 @@ api.add_namespace(chat_ns, path='/api')
 
 # Handler for Vercel
 def handler(request, context=None):
-    return app(request.environ, start_response=context)
+    return app(request.environ, context)
