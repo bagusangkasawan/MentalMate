@@ -25,7 +25,7 @@
 | **Backend Chatbot** | Python Flask                                | Menangani logika percakapan dan komunikasi dengan API |
 | **AI Chatbot**      | IBM watsonx Granite (granite-3-8b-instruct) | Memberikan respons dukungan mental yang empatik       |
 | **Blog**            | Flask + Template HTML                       | Menyediakan artikel informatif dengan filter kategori |
-| **Deployment**      | Google Cloud Run                            | Deploy aplikasi Flask                                 |
+| **Deployment**      | Azure Container App                            | Deploy aplikasi Flask                                 |
 | **Version Control** | GitHub                                      | Manajemen kode sumber                                 |
 
 ---
@@ -89,9 +89,9 @@ python app.py
 
 * **Localhost**: `http://localhost:8080/`
 * **Online (Production)**:
-  👉 [MentalMate Live App](https://mentalmate-325126223708.us-central1.run.app/)
+  👉 [MentalMate Live App](https://mentalmate.yellowsky-7db257e3.eastus.azurecontainerapps.io)
 
-> ⏳ *Note: Mungkin membutuhkan waktu beberapa saat ketika pertama dibuka karena cold start dari Google Cloud Run.*
+> ⏳ *Note: Mungkin membutuhkan waktu beberapa saat ketika pertama dibuka karena cold start dari Azure Container App.*
 
 ---
 
@@ -101,7 +101,7 @@ MentalMate juga dapat digunakan sebagai **backend REST API**.
 
 * Endpoint utama: `POST /api/generate`
 * Dokumentasi Swagger:
-  👉 [MentalMate Chatbot API](https://mentalmate-325126223708.us-central1.run.app/api/docs)
+  👉 [MentalMate Chatbot API](https://mentalmate.yellowsky-7db257e3.eastus.azurecontainerapps.io/api/docs)
 
 Contoh request:
 
