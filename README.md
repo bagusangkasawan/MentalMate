@@ -25,7 +25,7 @@
 | **Backend Chatbot** | Python Flask                                | Menangani logika percakapan dan komunikasi dengan API |
 | **AI Chatbot**      | IBM watsonx Granite (granite-3-8b-instruct) | Memberikan respons dukungan mental yang empatik       |
 | **Blog**            | Flask + Template HTML                       | Menyediakan artikel informatif dengan filter kategori |
-| **Deployment**      | Azure Container App                            | Deploy aplikasi Flask                                 |
+| **Deployment**      | Azure Container App                         | Deploy aplikasi Flask                                 |
 | **Version Control** | GitHub                                      | Manajemen kode sumber                                 |
 
 ---
