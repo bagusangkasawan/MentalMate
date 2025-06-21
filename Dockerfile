@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8080
 
 # Jalankan aplikasi
-CMD ["python", "api/app.py"]
+CMD ["python", "app.py"]

@@ -389,4 +389,116 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     });
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const sidebarLinks = document.querySelectorAll('.sidebar-category');
+    const blogCards = document.querySelectorAll('#blog-list .blog-card');
+
+    function filterArticlesByCategory(category) {
+      blogCards.forEach(card => {
+        const categories = Array.from(card.querySelectorAll('.blog-category')).map(span => span.textContent.trim());
+        const cardCol = card.closest('.col-md-6');
+        if (category === 'Semua' || categories.includes(category)) {
+          cardCol.style.display = 'block';
+        } else {
+          cardCol.style.display = 'none';
+        }
+      });
+
+      // Atur active class di filterButtons
+      filterButtons.forEach(btn => {
+        if (btn.dataset.category === category) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Atur active class di sidebarLinks
+      sidebarLinks.forEach(link => {
+        if (link.dataset.category === category) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    // Untuk tombol filter atas
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.dataset.category;
+        filterArticlesByCategory(category);
+      });
+    });
+
+    // Untuk kategori di sidebar
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const category = this.dataset.category;
+        filterArticlesByCategory(category);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+    
+    function showArticleByHref(button) {
+      const targetId = button.getAttribute('href');
+      const article = document.querySelector(targetId);
+      const category = document.querySelector('.category-filter');
+      const blogList = document.getElementById('blog-list');
+      const sidebar = document.querySelector('.col-lg-4');
+      const pagination = document.querySelector('.mt-5');
+
+      if (article && blogList) {
+        category.classList.add('d-none')
+        blogList.classList.add('d-none');
+        sidebar.classList.add('d-none');
+        pagination.classList.add('d-none');
+        
+        document.querySelectorAll('section[id^="article-"]').forEach(item => item.classList.add('d-none'));
+        article.classList.remove('d-none');
+
+        // Optional: scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // Untuk tombol "Baca Selengkapnya"
+    document.querySelectorAll('.btn.btn-sm.btn-primary-custom').forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        showArticleByHref(this);
+      });
+    });
+
+    // Untuk tombol "Artikel Populer" juga
+    document.querySelectorAll('.sidebar-list a').forEach(link => {
+      // Pastikan ini tidak konflik dengan link kategori sidebar yang sudah punya event listener
+      if (!link.classList.contains('sidebar-category')) { 
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          showArticleByHref(this);
+        });
+      }
+    });
+
+    // Tombol kembali ke blog
+    document.querySelectorAll('.back-to-blog').forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector('.category-filter').classList.remove('d-none');
+        document.getElementById('blog-list').classList.remove('d-none');
+        document.querySelector('.col-lg-4').classList.remove('d-none');
+        document.querySelector('.mt-5').classList.remove('d-none');
+        document.querySelectorAll('section[id^="article-"]').forEach(article => {
+          article.classList.add('d-none');
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.scrollTo(0, 0);
+    });
 });
