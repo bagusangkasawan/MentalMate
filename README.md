@@ -89,7 +89,7 @@ python app.py
 
 * **Localhost**: `http://localhost:8080/`
 * **Online (Production)**:
-  👉 [MentalMate Live App](https://mentalmate-app.yellowsky-7db257e3.eastus.azurecontainerapps.io/)
+  👉 [MentalMate Live App](https://mentalmate-325126223708.us-central1.run.app/)
 
 > ⏳ *Note: Mungkin membutuhkan waktu beberapa saat ketika pertama dibuka karena cold start dari Google Cloud Run.*
 
@@ -101,7 +101,7 @@ MentalMate juga dapat digunakan sebagai **backend REST API**.
 
 * Endpoint utama: `POST /api/generate`
 * Dokumentasi Swagger:
-  👉 [MentalMate Chatbot API](https://mentalmate-app.yellowsky-7db257e3.eastus.azurecontainerapps.io/api/docs)
+  👉 [MentalMate Chatbot API](https://mentalmate-325126223708.us-central1.run.app/api/docs)
 
 Contoh request:
 
